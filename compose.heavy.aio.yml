@@ -8,7 +8,7 @@ services:
       - REDIS_URL=redis://cache
       - DATABASE_URL=postgresql://panel:panel@db/panel
       - DATABASE_MIGRATE=true
-      - PORT=8000
+      - PORT={{ PORT }}
       - AIO_BASE_WINGS_CONFIGURATION=/config/wings-config.yml
       - APP_DEBUG=false
       - APP_LOG_DIRECTORY=/var/log/calagopus
@@ -41,7 +41,7 @@ services:
       - "/var/lib/calagopus-wings/:/var/lib/calagopus-wings/"
       - "/var/log/calagopus-wings/:/var/log/calagopus-wings/"
     ports:
-      - 8000:8000
+      - "{{ PORT }}:{{ PORT }}"
       - 2022:2022 # sftp port for integrated wings
     depends_on:
       - db
